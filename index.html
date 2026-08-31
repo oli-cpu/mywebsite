@@ -1,577 +1,158 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="Oliver Studer – IT, Networking & Cybersecurity Portfolio">
-
-    <title>Oliver Studer — IT & Cybersecurity</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Oliver Studer – interaktives IT, Networking & Cybersecurity Portfolio">
+<title>Oliver // Digital Space</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- Background -->
-    <div class="grid-background"></div>
-
-    <!-- ================= NAVIGATION ================= -->
-
-    <header class="navbar">
-
-        <button class="logo" data-tab="start" type="button">
-            Oliver
-        </button>
-
-        <button class="menu-button" id="menuButton" aria-label="Menü öffnen">
-            ☰
-        </button>
-
-        <nav id="navigation" role="tablist" aria-label="Hauptnavigation">
-
-            <button data-tab="start" type="button" class="active" role="tab" aria-selected="true">Start</button>
-            <button data-tab="about" type="button" role="tab" aria-selected="false">Über mich</button>
-            <button data-tab="projects" type="button" role="tab" aria-selected="false">Projekte</button>
-            <button data-tab="skills" type="button" role="tab" aria-selected="false">Skills</button>
-            <button data-tab="contact" type="button" role="tab" aria-selected="false">Kontakt</button>
-
-        </nav>
-
-    </header>
-
-
-    <main>
-
-        <!-- ================= HERO ================= -->
-
-        <section id="home" class="hero tab-panel active" data-panel="start">
-
-            <div class="hero-content">
-
-                <div class="status">
-                    <span></span>
-                    Offen für Lehrstellen, Praktika &amp; Projekte
-                </div>
-
-                <div class="hero-heading">
-
-                    <div class="bracket"></div>
-
-                    <h1>
-                        Netzwerke bauen.<br>
-                        Systeme verstehen.<br>
-                        Sicherheit denken.
-                    </h1>
-
-                </div>
-
-                <p class="hero-description">
-                    Ich bin Oliver – Informatiker mit Interesse an
-                    Netzwerken, Linux und Cybersecurity.
-                    Ich lerne durch eigene Projekte,
-                    Labs und praktische Experimente.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <button type="button" class="button primary" data-tab="projects">
-                        Projekte ansehen
-                        <span>↗</span>
-                    </button>
-
-                    <button type="button" class="button secondary" data-tab="contact">
-                        Kontakt
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- Trace panel -->
-
-            <div class="trace-panel">
-
-                <div class="trace-header">
-
-                    <div class="trace-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <p>trace — client → server</p>
-
-                </div>
-
-
-                <div class="trace-body">
-
-                    <div class="trace-track">
-                        <div class="trace-pulse"></div>
-                    </div>
-
-                    <div class="hop">
-                        <div class="hop-dot"></div>
-                        <div class="hop-info">
-                            <span class="hop-name">Client</span>
-                            <span class="hop-ip">10.0.0.4</span>
-                        </div>
-                        <span class="hop-ms">0.1 ms</span>
-                    </div>
-
-                    <div class="hop">
-                        <div class="hop-dot"></div>
-                        <div class="hop-info">
-                            <span class="hop-name">Router</span>
-                            <span class="hop-ip">192.168.1.1</span>
-                        </div>
-                        <span class="hop-ms">1.4 ms</span>
-                    </div>
-
-                    <div class="hop">
-                        <div class="hop-dot"></div>
-                        <div class="hop-info">
-                            <span class="hop-name">ISP Gateway</span>
-                            <span class="hop-ip">84.226.14.1</span>
-                        </div>
-                        <span class="hop-ms">8.7 ms</span>
-                    </div>
-
-                    <div class="hop">
-                        <div class="hop-dot"></div>
-                        <div class="hop-info">
-                            <span class="hop-name">Server</span>
-                            <span class="hop-ip">oliver-lab.ch</span>
-                        </div>
-                        <span class="hop-ms" id="finalMs">23 ms</span>
-                    </div>
-
-
-                    <div class="trace-footer">
-                        <span class="live">verbunden</span>
-                        <span id="latencyReading">Ø 23 ms</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= ABOUT ================= -->
-
-        <section id="about" class="section tab-panel" data-panel="about">
-
-            <div class="two-column">
-
-                <div>
-
-                    <h2>
-                        Neugierig auf
-                        <br>Technologie.
-                    </h2>
-
-                </div>
-
-
-                <div class="about-content">
-
-                    <p>
-                        Ich mache eine Ausbildung als Informatiker EFZ
-                        und beschäftige mich auch außerhalb der Arbeit
-                        mit IT und Cybersecurity.
-                    </p>
-
-                    <p>
-                        Besonders interessant finde ich Netzwerke,
-                        Linux, Security und die praktische
-                        Problemlösung.
-                    </p>
-
-                    <p>
-                        Mein Ziel ist es, meine technischen Fähigkeiten
-                        kontinuierlich auszubauen und später im
-                        Bereich Cybersecurity zu arbeiten.
-                    </p>
-
-
-                    <div class="facts">
-
-                        <div>
-                            <strong>EFZ</strong>
-                            <small>Ausbildung</small>
-                        </div>
-
-                        <div>
-                            <strong>Lab</strong>
-                            <small>Hands-on Learning</small>
-                        </div>
-
-                        <div>
-                            <strong>∞</strong>
-                            <small>Neugier</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="philosophy-inner about-philosophy">
-
-                <div class="bracket"></div>
-
-                <div>
-
-                    <h2>
-                        Don't just use technology.
-                        <br>
-                        Understand it.
-                    </h2>
-
-                    <p>
-                        Learn by building. Test things in controlled
-                        environments. Fix them. Repeat.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= PROJECTS ================= -->
-
-        <section id="projects" class="section tab-panel" data-panel="projects">
-
-            <div class="section-heading">
-
-                <h2>
-                    Was ich
-                    <br>baue.
-                </h2>
-
-                <p>
-                    Praktische Projekte sind für mich
-                    der beste Weg, neue Technologien
-                    wirklich zu verstehen.
-                </p>
-
-            </div>
-
-
-            <div class="projects">
-
-
-                <!-- PROJECT 1 -->
-
-                <article class="project">
-
-                    <span class="project-icon">⌁</span>
-
-                    <h3>
-                        Cybersecurity Homelab
-                    </h3>
-
-                    <p>
-                        Eigene Testumgebung zum Lernen von
-                        Netzwerk- und Security-Konzepten.
-                    </p>
-
-                    <div class="tags">
-
-                        <span>pfSense</span>
-                        <span>Linux</span>
-                        <span>VLAN</span>
-                        <span>Metasploitable</span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 2 -->
-
-                <article class="project">
-
-                    <span class="project-icon">⇄</span>
-
-                    <h3>
-                        Network Lab
-                    </h3>
-
-                    <p>
-                        DHCP, DNS, VLANs, Firewalls und
-                        Netzwerk-Monitoring in einer
-                        eigenen Umgebung.
-                    </p>
-
-                    <div class="tags">
-
-                        <span>Networking</span>
-                        <span>DNS</span>
-                        <span>DHCP</span>
-                        <span>Wireshark</span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 3 -->
-
-                <article class="project">
-
-                    <span class="project-icon">⚿</span>
-
-                    <h3>
-                        CTF &amp; Security
-                    </h3>
-
-                    <p>
-                        Security Challenges zum Trainieren
-                        von Enumeration, Web Security
-                        und Linux.
-                    </p>
-
-                    <div class="tags">
-
-                        <span>CTF</span>
-                        <span>Nmap</span>
-                        <span>Burp Suite</span>
-                        <span>Linux</span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 4 -->
-
-                <article class="project">
-
-                    <span class="project-icon">{ }</span>
-
-                    <h3>
-                        Programming
-                    </h3>
-
-                    <p>
-                        Kleine Tools und Automatisierungen,
-                        um Aufgaben schneller und effizienter
-                        zu erledigen.
-                    </p>
-
-                    <div class="tags">
-
-                        <span>Python</span>
-                        <span>C#</span>
-                        <span>SQL</span>
-                        <span>Git</span>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= SKILLS ================= -->
-
-        <section id="skills" class="section tab-panel" data-panel="skills">
-
-            <div class="two-column skills-section">
-
-                <div>
-
-                    <h2>
-                        Mein
-                        <br>Stack.
-                    </h2>
-
-                    <p class="muted">
-                        Technologien und Bereiche,
-                        mit denen ich mich beschäftige.
-                    </p>
-
-                </div>
-
-
-                <div class="skills">
-
-
-                    <div class="skill">
-
-                        <div class="skill-header">
-                            <span>Networking</span>
-                            <span>90%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <span style="width:90%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill">
-
-                        <div class="skill-header">
-                            <span>Linux</span>
-                            <span>85%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <span style="width:85%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill">
-
-                        <div class="skill-header">
-                            <span>Cybersecurity</span>
-                            <span>80%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <span style="width:80%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill">
-
-                        <div class="skill-header">
-                            <span>Windows Server</span>
-                            <span>80%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <span style="width:80%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill">
-
-                        <div class="skill-header">
-                            <span>Python</span>
-                            <span>70%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <span style="width:70%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill">
-
-                        <div class="skill-header">
-                            <span>SQL / C#</span>
-                            <span>60%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <span style="width:60%"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= CONTACT ================= -->
-
-        <section id="contact" class="section tab-panel" data-panel="contact">
-
-            <div class="contact-box">
-
-                <div>
-
-                    <div class="status">
-                        <span></span>
-                        Let's connect
-                    </div>
-
-                    <h2>
-                        Du willst mich
-                        <br>erreichen?
-                    </h2>
-
-                    <p class="muted">
-                        Für Projekte, Networking oder einfach
-                        einen Austausch über IT &amp; Cybersecurity.
-                    </p>
-
-                </div>
-
-
-                <div class="contact-links">
-
-                    <a href="mailto:oliver.studer5@gmail.com">
-                        <span>E-Mail</span>
-                        <span>↗</span>
-                    </a>
-
-
-                    <a href="https://www.linkedin.com/in/oliver-studer-380a4b396/"
-                       target="_blank" rel="noopener">
-                        <span>LinkedIn</span>
-                        <span>↗</span>
-                    </a>
-
-
-                    <a href="https://github.com/oli-cpu"
-                       target="_blank" rel="noopener">
-                        <span>GitHub</span>
-                        <span>↗</span>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <span>© <span id="year"></span> Oliver Studer</span>
-        <span>Built with HTML · CSS · JS</span>
-
-    </footer>
-
-
-    <script src="script.js"></script>
-
+<div class="noise"></div>
+<div class="grid-background"></div>
+<div class="cursor-glow"></div>
+
+<header class="navbar">
+  <button class="logo" data-tab="start"><img src="logo-icon.png" class="logo-icon" alt="Oliver Studer Logo">OLIVER<span class="logo-slash">/</span></button>
+  <nav id="navigation">
+    <button class="nav-link active" data-tab="start">Start</button>
+    <button class="nav-link" data-tab="about">Über mich</button>
+    <button class="nav-link" data-tab="photos">Photos</button>
+    <button class="nav-link" data-tab="projects">Projekte</button>
+    <button class="nav-link" data-tab="arcade">Arcade</button>
+    <button class="nav-link" data-tab="terminal">Terminal</button>
+    <button class="nav-link" data-tab="contact">Kontakt</button>
+  </nav>
+  <button class="menu-button" id="menuButton" aria-label="Menü öffnen">☰</button>
+</header>
+
+<main>
+<section class="page hero tab-panel active" data-panel="start">
+  <div class="hero-copy reveal">
+    <div class="eyebrow"><span class="live-dot"></span>SYSTEM ONLINE <span class="mono">/ Zürich · CH</span></div>
+    <div class="hero-heading"><div class="bracket"></div><div>
+      <p class="kicker">INFORMATICS / CYBERSECURITY / TECH</p>
+      <h1>Build.<br><span>Break.</span><br>Understand.</h1>
+    </div></div>
+    <p class="hero-description">Ich bin Oliver – Informatiker mit einer Leidenschaft für Netzwerke, Linux, Cybersecurity und alles, was man auseinandernehmen, testen und wieder zum Laufen bringen kann.</p>
+    <div class="hero-buttons">
+      <button class="button primary" data-tab="projects">Meine Projekte ↗</button>
+      <button class="button secondary" data-tab="arcade">Spiel starten <span>▶</span></button>
+    </div>
+    <div class="quick-stats">
+      <div><strong>01</strong><span>Homelab</span></div>
+      <div><strong>∞</strong><span>Curiosity</span></div>
+      <div><strong>24/7</strong><span>Ideas</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal delay-1">
+    <div class="profile-card tilt">
+      <div class="profile-top"><span>USER_PROFILE</span><span>v2.0</span></div>
+      <div class="profile-main">
+        <div class="profile-avatar"><img src="foto.jpg" alt="Foto von Oliver" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>OS</span></div>
+        <div><p class="mono accent">ID: OLIVER</p><h2>Digital Explorer</h2><p class="muted">Informatiker EFZ · Builder · Tinkerer</p></div>
+      </div>
+      <div class="mini-terminal">
+        <div><span class="terminal-green">●</span> network.service <b>ACTIVE</b></div>
+        <div><span class="terminal-green">●</span> security.lab <b>RUNNING</b></div>
+        <div><span class="terminal-green">●</span> curiosity.exe <b>∞%</b></div>
+      </div>
+      <div class="scanline"></div>
+    </div>
+    <div class="floating-card float-a"><span>PACKETS</span><strong id="packetCounter">08421</strong></div>
+    <div class="floating-card float-b"><span>LATENCY</span><strong id="latencyReading">23.4 ms</strong></div>
+  </div>
+</section>
+
+<section class="page section tab-panel" data-panel="about">
+  <div class="section-heading"><div><p class="kicker">01 / PROFILE</p><h2>Neugierig auf<br><span>Technologie.</span></h2></div><p>Ich lerne am liebsten nicht durch Zuschauen, sondern durch Ausprobieren.</p></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Ich mache eine Ausbildung als Informatiker EFZ und verbringe auch ausserhalb der Schule viel Zeit mit IT und Cybersecurity – einfach weil es mich wirklich interessiert.</p>
+      <p>Besonders reizen mich Netzwerke, Linux, Security und das Tüfteln, bis ein Problem endlich gelöst ist.</p>
+      <p>Mein Ziel ist es, meine technischen Fähigkeiten kontinuierlich auszubauen und später im Bereich Cybersecurity zu arbeiten.</p>
+      <div class="quote-box"><span>01</span><p>Don't just use technology.<br><b>Understand it.</b></p></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><span>NOW</span><div><h3>Informatiker EFZ</h3><p>IT · Netzwerke · Security</p></div></div>
+      <div class="timeline-item"><span>LAB</span><div><h3>Homelab</h3><p>Linux · Virtualisierung · Monitoring</p></div></div>
+      <div class="timeline-item"><span>PLAY</span><div><h3>Gaming & Modding</h3><p>Eigene Ideen bauen und ausprobieren</p></div></div>
+      <div class="timeline-item"><span>∞</span><div><h3>Next challenge</h3><p>Learn · Build · Break · Repeat</p></div></div>
+    </div>
+  </div>
+  <div class="hobby-grid">
+    <article class="glass-card"><span class="big-icon">⌁</span><h3>Cybersecurity</h3><p>Labs, CTFs und Security-Experimente in kontrollierten Umgebungen.</p></article>
+    <article class="glass-card"><span class="big-icon">▲</span><h3>Gaming & Modding</h3><p>Spielen ist gut. Dinge selbst bauen ist besser.</p></article>
+    <article class="glass-card"><span class="big-icon">◈</span><h3>Networking</h3><p>Von DNS und VLANs bis zu Firewalls und Packet Traces.</p></article>
+  </div>
+</section>
+
+<section class="page section tab-panel" data-panel="photos">
+  <div class="section-heading"><div><p class="kicker">02 / PHOTO VAULT</p><h2>Moments.<br><span>Captured.</span></h2></div></div>
+  <div class="photo-grid">
+    <button class="photo-card photo-1" data-photo="Foto 01"><span>01</span><b>DROP YOUR PHOTO</b><small>foto-01.jpg</small></button>
+    <button class="photo-card photo-2" data-photo="Foto 02"><span>02</span><b>YOUR MOMENT</b><small>foto-02.jpg</small></button>
+    <button class="photo-card photo-3" data-photo="Foto 03"><span>03</span><b>ANOTHER STORY</b><small>foto-03.jpg</small></button>
+    <button class="photo-card photo-4" data-photo="Foto 04"><span>04</span><b>THE LAB</b><small>foto-04.jpg</small></button>
+    <button class="photo-card photo-5" data-photo="Foto 05"><span>05</span><b>OUTSIDE THE MATRIX</b><small>foto-05.jpg</small></button>
+  </div>
+  </section>
+
+<section class="page section tab-panel" data-panel="projects">
+  <div class="section-heading"><div><p class="kicker">03 / BUILD LOG</p><h2>Was ich<br><span>baue.</span></h2></div><p>Praktische Projekte sind für mich der beste Weg, neue Technologien wirklich zu verstehen.</p></div>
+  <div class="projects">
+    <article class="project-card featured" data-project="Cybersecurity Homelab"><div class="project-number">01</div><div class="project-icon">⌁</div><h3>Cybersecurity Homelab</h3><p>Eigene Testumgebung zum Lernen von Netzwerk- und Security-Konzepten.</p><div class="tags"><span>Linux</span><span>VLAN</span><span>SIEM</span><span>Security</span></div><button>OPEN PROJECT ↗</button></article>
+    <article class="project-card" data-project="Network Lab"><div class="project-number">02</div><div class="project-icon">⇄</div><h3>Network Lab</h3><p>DHCP, DNS, VLANs, Firewalls und Netzwerk-Monitoring in einer eigenen Umgebung.</p><div class="tags"><span>Networking</span><span>DNS</span><span>DHCP</span><span>Wireshark</span></div><button>OPEN PROJECT ↗</button></article>
+    <article class="project-card" data-project="CTF & Security"><div class="project-number">03</div><div class="project-icon">⚿</div><h3>CTF & Security</h3><p>Security Challenges zum Trainieren von Enumeration, Web Security und Linux.</p><div class="tags"><span>CTF</span><span>Nmap</span><span>Burp</span><span>Linux</span></div><button>OPEN PROJECT ↗</button></article>
+    <article class="project-card" data-project="Programming"><div class="project-number">04</div><div class="project-icon">{ }</div><h3>Programming</h3><p>Kleine Tools und Automatisierungen, um Aufgaben schneller und effizienter zu erledigen.</p><div class="tags"><span>Python</span><span>C#</span><span>SQL</span><span>Git</span></div><button>OPEN PROJECT ↗</button></article>
+  </div>
+</section>
+
+<section class="page section tab-panel" data-panel="arcade">
+  <div class="section-heading"><div><p class="kicker">04 / ARCADE</p><h2>Play the<br><span>system.</span></h2></div><p>Kleine Games direkt auf der Website. Keine Downloads. Highscores bleiben lokal im Browser.</p></div>
+  <div class="game-grid">
+    <article class="game-card" id="clickerGame"><div class="game-header"><span>01 / CLICKER</span><span>★★★★★</span></div><div class="game-screen click-screen"><p class="mono">CLICK_POWER</p><strong id="clickScore">0</strong><button id="clickTarget">CLICK</button><small id="clickMessage">Can you reach 25?</small></div></article>
+    <article class="game-card"><div class="game-header"><span>02 / REACTION</span><span>⚡</span></div><div class="game-screen reaction-screen" id="reactionGame"><p class="mono">REACTION_TEST</p><strong id="reactionText">READY?</strong><button id="reactionButton">START</button><small>Warte auf GRÜN – dann so schnell wie möglich klicken.</small></div></article>
+    <article class="game-card"><div class="game-header"><span>03 / MEMORY</span><span>◈</span></div><div class="game-screen memory-screen" id="memoryGame"><p class="mono">MEMORY_GRID</p><div class="memory-grid"></div><small id="memoryStatus">Find all pairs.</small></div></article>
+    <article class="game-card" id="snakeGame"><div class="game-header"><span>04 / SNAKE</span><span>▦</span></div><div class="game-screen snake-screen"><p class="mono">SNAKE_PROTOCOL</p><canvas id="snakeCanvas" width="220" height="220"></canvas><div class="snake-footer"><strong id="snakeScore">0</strong><button id="snakeStart">START</button></div><small>Pfeiltasten oder WASD zum Steuern.</small></div></article>
+    <article class="game-card" id="tttGame"><div class="game-header"><span>05 / TIC-TAC-TOE</span><span>✕○</span></div><div class="game-screen ttt-screen"><p class="mono">VS_AI</p><div class="ttt-grid" id="tttGrid"></div><small id="tttStatus">Du bist X. Mach den ersten Zug.</small><button id="tttReset">RESET</button></div></article>
+    <article class="game-card" id="typingGame"><div class="game-header"><span>06 / TYPING SPEED</span><span>⌨</span></div><div class="game-screen typing-screen"><p class="mono">WPM_TEST</p><div class="typing-target" id="typingTarget">Klicke START um zu beginnen.</div><input id="typingInput" autocomplete="off" spellcheck="false" disabled placeholder="Hier tippen..."><div class="typing-stats"><span>WPM: <b id="typingWpm">0</b></span><span>Fehler: <b id="typingErrors">0</b></span></div><button id="typingStart">START</button></div></article>
+  </div>
+</section>
+
+<section class="page section tab-panel" data-panel="terminal">
+  <div class="section-heading"><div><p class="kicker">05 / TERMINAL</p><h2>Talk to<br><span>Oliver.exe</span></h2></div></div>
+  <div class="terminal-window">
+    <div class="terminal-bar"><span>●</span><span>●</span><span>●</span><b>visitor@oliver:~</b><button id="clearTerminal">CLEAR</button></div>
+    <div class="terminal-output" id="terminalOutput"><div>Welcome to <b>OLIVER.EXE</b> v2.0</div><div>Type <span class="terminal-accent">help</span> to see available commands. Pfeiltasten ↑↓ = Verlauf, Tab = Autocomplete.</div><br></div>
+    <form id="terminalForm"><span>visitor@oliver:~$</span><input id="terminalInput" autocomplete="off" spellcheck="false" aria-label="Terminal command"></form>
+  </div>
+</section>
+
+<section class="page section tab-panel" data-panel="contact">
+  <div class="contact-hero">
+    <p class="kicker">06 / CONNECTION</p><h2>Let's build<br><span>something.</span></h2>
+    <p>Für Projekte, Networking oder einfach einen Austausch über IT & Cybersecurity.</p>
+    <div class="contact-links">
+      <a href="mailto:oliver.studer5@gmail.com"><span>E-Mail</span><b>↗</b></a>
+      <a href="https://www.linkedin.com/in/oliver-studer-380a4b396/" target="_blank" rel="noopener"><span>LinkedIn</span><b>↗</b></a>
+      <a href="https://github.com/oli-cpu" target="_blank" rel="noopener"><span>GitHub</span><b>↗</b></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="modal"><div class="modal-inner"><button class="modal-close" id="modalClose">×</button><p class="kicker" id="modalKicker">PROJECT</p><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalBody"></div></div></div>
+
+<footer><span class="footer-brand"><img src="logo-full.png" class="footer-logo" alt="Oliver Studer Logo">© <span id="year"></span> Oliver</span><span>BUILT WITH HTML · CSS · JS</span><button id="secretButton">[ SYSTEM STATUS ]</button></footer>
+<script src="script.js"></script>
 </body>
 </html>
