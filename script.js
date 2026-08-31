@@ -2,38 +2,49 @@
    MOBILE MENU
 ===================================================== */
 
-const menuButton =
-    document.getElementById("menuButton");
-
-const navigation =
-    document.getElementById("navigation");
-
+const menuButton = document.getElementById("menuButton");
+const navigation = document.getElementById("navigation");
 
 menuButton.addEventListener("click", () => {
-
     navigation.classList.toggle("open");
-
 });
 
 
 /* =====================================================
-   CLOSE MOBILE MENU AFTER CLICK
+   TABS
 ===================================================== */
 
-const navigationLinks =
-    document.querySelectorAll(
-        "#navigation a"
-    );
+const tabButtons = document.querySelectorAll("[data-tab]");
+const panels = document.querySelectorAll(".tab-panel");
 
+function activateTab(tabName) {
 
-navigationLinks.forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navigation.classList.remove("open");
-
+    panels.forEach(panel => {
+        panel.classList.toggle(
+            "active",
+            panel.dataset.panel === tabName
+        );
     });
 
+    tabButtons.forEach(button => {
+        const isMatch = button.dataset.tab === tabName;
+
+        button.classList.toggle("active", isMatch);
+
+        if (button.tagName === "BUTTON" && button.closest("nav")) {
+            button.setAttribute("aria-selected", isMatch);
+        }
+    });
+
+    navigation.classList.remove("open");
+
+    window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+tabButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        activateTab(button.dataset.tab);
+    });
 });
 
 
@@ -41,79 +52,32 @@ navigationLinks.forEach(link => {
    CURRENT YEAR
 ===================================================== */
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 
 
 /* =====================================================
-   SCROLL ANIMATIONS
+   LIVE LATENCY READOUT
+   Small detail matched to the trace panel's animation
+   cycle (4.2s) so the number ticks roughly when the
+   packet "arrives" at the server hop.
 ===================================================== */
 
-const observer =
-    new IntersectionObserver(
+const latencyEl = document.getElementById("latencyReading");
+const finalMsEl = document.getElementById("finalMs");
 
-        entries => {
+if (latencyEl && finalMsEl) {
 
-            entries.forEach(entry => {
+    const tick = () => {
 
-                if (!entry.isIntersecting) {
-                    return;
-                }
+        const base = 23;
+        const jitter = (Math.random() * 6 - 3).toFixed(1);
+        const value = Math.max(14, (base + Number(jitter))).toFixed(1);
 
+        finalMsEl.textContent = `${value} ms`;
+        latencyEl.textContent = `Ø ${value} ms`;
 
-                entry.target.animate(
+    };
 
-                    [
-                        {
-                            opacity: 0,
-                            transform:
-                                "translateY(25px)"
-                        },
+    setInterval(tick, 4200);
 
-                        {
-                            opacity: 1,
-                            transform:
-                                "translateY(0)"
-                        }
-                    ],
-
-                    {
-                        duration: 650,
-                        easing:
-                            "cubic-bezier(.2,.8,.2,1)",
-                        fill: "forwards"
-                    }
-
-                );
-
-
-                observer.unobserve(
-                    entry.target
-                );
-
-            });
-
-        },
-
-        {
-            threshold: 0.08
-        }
-
-    );
-
-
-/* =====================================================
-   ELEMENTS TO ANIMATE
-===================================================== */
-
-document
-    .querySelectorAll(
-        ".project, .facts, .skill, .contact-box"
-    )
-    .forEach(element => {
-
-        element.style.opacity = "0";
-
-        observer.observe(element);
-
-    });
+}
