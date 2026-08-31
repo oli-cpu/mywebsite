@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
           rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -27,20 +27,21 @@
 
     <header class="navbar">
 
-        <a href="#home" class="logo">
-            OLIVER<span>.</span>
-        </a>
+        <button class="logo" data-tab="start" type="button">
+            Oliver
+        </button>
 
-        <button class="menu-button" id="menuButton">
+        <button class="menu-button" id="menuButton" aria-label="Menü öffnen">
             ☰
         </button>
 
-        <nav id="navigation">
+        <nav id="navigation" role="tablist" aria-label="Hauptnavigation">
 
-            <a href="#about">Über mich</a>
-            <a href="#projects">Projekte</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Kontakt</a>
+            <button data-tab="start" type="button" class="active" role="tab" aria-selected="true">Start</button>
+            <button data-tab="about" type="button" role="tab" aria-selected="false">Über mich</button>
+            <button data-tab="projects" type="button" role="tab" aria-selected="false">Projekte</button>
+            <button data-tab="skills" type="button" role="tab" aria-selected="false">Skills</button>
+            <button data-tab="contact" type="button" role="tab" aria-selected="false">Kontakt</button>
 
         </nav>
 
@@ -51,20 +52,26 @@
 
         <!-- ================= HERO ================= -->
 
-        <section id="home" class="hero">
+        <section id="home" class="hero tab-panel active" data-panel="start">
 
             <div class="hero-content">
 
                 <div class="status">
                     <span></span>
-                    OPEN TO OPPORTUNITIES
+                    Offen für Lehrstellen, Praktika &amp; Projekte
                 </div>
 
-                <h1>
-                    Building.<br>
-                    <span>Learning.</span><br>
-                    Securing.
-                </h1>
+                <div class="hero-heading">
+
+                    <div class="bracket"></div>
+
+                    <h1>
+                        Netzwerke bauen.<br>
+                        Systeme verstehen.<br>
+                        Sicherheit denken.
+                    </h1>
+
+                </div>
 
                 <p class="hero-description">
                     Ich bin Oliver – Informatiker mit Interesse an
@@ -75,71 +82,84 @@
 
                 <div class="hero-buttons">
 
-                    <a href="#projects" class="button primary">
+                    <button type="button" class="button primary" data-tab="projects">
                         Projekte ansehen
                         <span>↗</span>
-                    </a>
+                    </button>
 
-                    <a href="#contact" class="button secondary">
+                    <button type="button" class="button secondary" data-tab="contact">
                         Kontakt
-                    </a>
+                    </button>
 
                 </div>
 
             </div>
 
 
-            <!-- Terminal -->
+            <!-- Trace panel -->
 
-            <div class="terminal">
+            <div class="trace-panel">
 
-                <div class="terminal-header">
+                <div class="trace-header">
 
-                    <div class="terminal-dots">
+                    <div class="trace-dots">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
 
-                    <p>oli@portfolio:~</p>
+                    <p>trace — client → server</p>
 
                 </div>
 
 
-                <div class="terminal-content">
+                <div class="trace-body">
 
-                    <p>
-                        <b>$</b> whoami
-                    </p>
+                    <div class="trace-track">
+                        <div class="trace-pulse"></div>
+                    </div>
 
-                    <p class="green">
-                        oliver_studer
-                    </p>
+                    <div class="hop">
+                        <div class="hop-dot"></div>
+                        <div class="hop-info">
+                            <span class="hop-name">Client</span>
+                            <span class="hop-ip">10.0.0.4</span>
+                        </div>
+                        <span class="hop-ms">0.1 ms</span>
+                    </div>
 
-                    <p>
-                        <b>$</b> cat interests.txt
-                    </p>
+                    <div class="hop">
+                        <div class="hop-dot"></div>
+                        <div class="hop-info">
+                            <span class="hop-name">Router</span>
+                            <span class="hop-ip">192.168.1.1</span>
+                        </div>
+                        <span class="hop-ms">1.4 ms</span>
+                    </div>
 
-                    <p class="output">
-                        networking
-                    </p>
+                    <div class="hop">
+                        <div class="hop-dot"></div>
+                        <div class="hop-info">
+                            <span class="hop-name">ISP Gateway</span>
+                            <span class="hop-ip">84.226.14.1</span>
+                        </div>
+                        <span class="hop-ms">8.7 ms</span>
+                    </div>
 
-                    <p class="output">
-                        cybersecurity
-                    </p>
+                    <div class="hop">
+                        <div class="hop-dot"></div>
+                        <div class="hop-info">
+                            <span class="hop-name">Server</span>
+                            <span class="hop-ip">oliver-lab.ch</span>
+                        </div>
+                        <span class="hop-ms" id="finalMs">23 ms</span>
+                    </div>
 
-                    <p class="output">
-                        linux
-                    </p>
 
-                    <p class="output">
-                        programming
-                    </p>
-
-                    <p>
-                        <b>$</b>
-                        <span class="cursor"></span>
-                    </p>
+                    <div class="trace-footer">
+                        <span class="live">verbunden</span>
+                        <span id="latencyReading">Ø 23 ms</span>
+                    </div>
 
                 </div>
 
@@ -150,11 +170,7 @@
 
         <!-- ================= ABOUT ================= -->
 
-        <section id="about" class="section">
-
-            <div class="section-label">
-                01 / ABOUT
-            </div>
+        <section id="about" class="section tab-panel" data-panel="about">
 
             <div class="two-column">
 
@@ -162,7 +178,7 @@
 
                     <h2>
                         Neugierig auf
-                        <span>Technologie.</span>
+                        <br>Technologie.
                     </h2>
 
                 </div>
@@ -192,21 +208,43 @@
                     <div class="facts">
 
                         <div>
-                            <strong>IT</strong>
+                            <strong>EFZ</strong>
                             <small>Ausbildung</small>
                         </div>
 
                         <div>
-                            <strong>LAB</strong>
+                            <strong>Lab</strong>
                             <small>Hands-on Learning</small>
                         </div>
 
                         <div>
                             <strong>∞</strong>
-                            <small>Curiosity</small>
+                            <small>Neugier</small>
                         </div>
 
                     </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="philosophy-inner about-philosophy">
+
+                <div class="bracket"></div>
+
+                <div>
+
+                    <h2>
+                        Don't just use technology.
+                        <br>
+                        Understand it.
+                    </h2>
+
+                    <p>
+                        Learn by building. Test things in controlled
+                        environments. Fix them. Repeat.
+                    </p>
 
                 </div>
 
@@ -217,18 +255,13 @@
 
         <!-- ================= PROJECTS ================= -->
 
-        <section id="projects" class="section">
-
-            <div class="section-label">
-                02 / PROJECTS
-            </div>
-
+        <section id="projects" class="section tab-panel" data-panel="projects">
 
             <div class="section-heading">
 
                 <h2>
                     Was ich
-                    <span>baue.</span>
+                    <br>baue.
                 </h2>
 
                 <p>
@@ -247,17 +280,7 @@
 
                 <article class="project">
 
-                    <div class="project-top">
-
-                        <span class="project-number">
-                            01
-                        </span>
-
-                        <span class="project-icon">
-                            ⌁
-                        </span>
-
-                    </div>
+                    <span class="project-icon">⌁</span>
 
                     <h3>
                         Cybersecurity Homelab
@@ -284,17 +307,7 @@
 
                 <article class="project">
 
-                    <div class="project-top">
-
-                        <span class="project-number">
-                            02
-                        </span>
-
-                        <span class="project-icon">
-                            ⌘
-                        </span>
-
-                    </div>
+                    <span class="project-icon">⇄</span>
 
                     <h3>
                         Network Lab
@@ -322,20 +335,10 @@
 
                 <article class="project">
 
-                    <div class="project-top">
-
-                        <span class="project-number">
-                            03
-                        </span>
-
-                        <span class="project-icon">
-                            _
-                        </span>
-
-                    </div>
+                    <span class="project-icon">⚿</span>
 
                     <h3>
-                        CTF & Security
+                        CTF &amp; Security
                     </h3>
 
                     <p>
@@ -360,17 +363,7 @@
 
                 <article class="project">
 
-                    <div class="project-top">
-
-                        <span class="project-number">
-                            04
-                        </span>
-
-                        <span class="project-icon">
-                            { }
-                        </span>
-
-                    </div>
+                    <span class="project-icon">{ }</span>
 
                     <h3>
                         Programming
@@ -400,12 +393,7 @@
 
         <!-- ================= SKILLS ================= -->
 
-        <section id="skills" class="section">
-
-            <div class="section-label">
-                03 / SKILLS
-            </div>
-
+        <section id="skills" class="section tab-panel" data-panel="skills">
 
             <div class="two-column skills-section">
 
@@ -413,7 +401,7 @@
 
                     <h2>
                         Mein
-                        <span>Stack.</span>
+                        <br>Stack.
                     </h2>
 
                     <p class="muted">
@@ -430,15 +418,8 @@
                     <div class="skill">
 
                         <div class="skill-header">
-
-                            <span>
-                                Networking
-                            </span>
-
-                            <span>
-                                90%
-                            </span>
-
+                            <span>Networking</span>
+                            <span>90%</span>
                         </div>
 
                         <div class="skill-bar">
@@ -451,15 +432,8 @@
                     <div class="skill">
 
                         <div class="skill-header">
-
-                            <span>
-                                Linux
-                            </span>
-
-                            <span>
-                                85%
-                            </span>
-
+                            <span>Linux</span>
+                            <span>85%</span>
                         </div>
 
                         <div class="skill-bar">
@@ -472,15 +446,8 @@
                     <div class="skill">
 
                         <div class="skill-header">
-
-                            <span>
-                                Cybersecurity
-                            </span>
-
-                            <span>
-                                80%
-                            </span>
-
+                            <span>Cybersecurity</span>
+                            <span>80%</span>
                         </div>
 
                         <div class="skill-bar">
@@ -493,15 +460,8 @@
                     <div class="skill">
 
                         <div class="skill-header">
-
-                            <span>
-                                Windows Server
-                            </span>
-
-                            <span>
-                                80%
-                            </span>
-
+                            <span>Windows Server</span>
+                            <span>80%</span>
                         </div>
 
                         <div class="skill-bar">
@@ -514,15 +474,8 @@
                     <div class="skill">
 
                         <div class="skill-header">
-
-                            <span>
-                                Python
-                            </span>
-
-                            <span>
-                                70%
-                            </span>
-
+                            <span>Python</span>
+                            <span>70%</span>
                         </div>
 
                         <div class="skill-bar">
@@ -535,15 +488,8 @@
                     <div class="skill">
 
                         <div class="skill-header">
-
-                            <span>
-                                SQL / C#
-                            </span>
-
-                            <span>
-                                60%
-                            </span>
-
+                            <span>SQL / C#</span>
+                            <span>60%</span>
                         </div>
 
                         <div class="skill-bar">
@@ -559,36 +505,9 @@
         </section>
 
 
-        <!-- ================= PHILOSOPHY ================= -->
-
-        <section class="philosophy section">
-
-            <div class="quote">
-                "
-            </div>
-
-            <h2>
-                Don't just use technology.
-                <br>
-                <span>Understand it.</span>
-            </h2>
-
-            <p>
-                Learn by building. Test things in controlled
-                environments. Fix them. Repeat.
-            </p>
-
-        </section>
-
-
         <!-- ================= CONTACT ================= -->
 
-        <section id="contact" class="section">
-
-            <div class="section-label">
-                04 / CONTACT
-            </div>
-
+        <section id="contact" class="section tab-panel" data-panel="contact">
 
             <div class="contact-box">
 
@@ -596,17 +515,17 @@
 
                     <div class="status">
                         <span></span>
-                        LET'S CONNECT
+                        Let's connect
                     </div>
 
                     <h2>
                         Du willst mich
-                        <span>erreichen?</span>
+                        <br>erreichen?
                     </h2>
 
                     <p class="muted">
                         Für Projekte, Networking oder einfach
-                        einen Austausch über IT & Cybersecurity.
+                        einen Austausch über IT &amp; Cybersecurity.
                     </p>
 
                 </div>
@@ -614,46 +533,23 @@
 
                 <div class="contact-links">
 
-                    <!-- HIER DEINE DATEN EINTRAGEN -->
-
                     <a href="mailto:oliver.studer5@gmail.com">
-
-                        <span>
-                            E-Mail
-                        </span>
-
-                        <span>
-                            ↗
-                        </span>
-
+                        <span>E-Mail</span>
+                        <span>↗</span>
                     </a>
 
 
                     <a href="https://www.linkedin.com/in/oliver-studer-380a4b396/"
-                       target="_blank">
-
-                        <span>
-                            LinkedIn
-                        </span>
-
-                        <span>
-                            ↗
-                        </span>
-
+                       target="_blank" rel="noopener">
+                        <span>LinkedIn</span>
+                        <span>↗</span>
                     </a>
 
 
                     <a href="https://github.com/oli-cpu"
-                       target="_blank">
-
-                        <span>
-                            GitHub
-                        </span>
-
-                        <span>
-                            ↗
-                        </span>
-
+                       target="_blank" rel="noopener">
+                        <span>GitHub</span>
+                        <span>↗</span>
                     </a>
 
                 </div>
@@ -669,13 +565,8 @@
 
     <footer>
 
-        <span>
-            © <span id="year"></span> Oliver Studer
-        </span>
-
-        <span>
-            Built with HTML · CSS · JS
-        </span>
+        <span>© <span id="year"></span> Oliver Studer</span>
+        <span>Built with HTML · CSS · JS</span>
 
     </footer>
 
